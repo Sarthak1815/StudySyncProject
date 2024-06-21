@@ -1,0 +1,803 @@
+:root {
+    --primary-color: #6366F1;
+    --accent-color: #3f83f8;
+    --text-color: #333333;
+    --link-color: #2563eb;
+    --background-color: #ffffff;
+    --light-gray: #f0f0f0;
+    --gray: #808080;
+    --dark-gray: #555;
+}
+
+/* this is a general practice */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none; 
+    /* text decoration isleye none kia because underline hatani thi */
+}
+
+body{
+    height: 100vh;
+    /* vh means viewport height so i want 100% of the viewport height */
+    text-align: center;
+    background-color: var(--background-color);
+    padding: 2rem;
+}
+
+/* ab uss box ko style karna hai jiske andar teen chiizze daali thi */
+.header-content{
+    /* ek max width le raha hai container */
+    max-width: 1280px;
+    margin: 0 auto;
+    /* max width dedi */
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.logo{
+    /* two items hai unko arrange karna hai */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    gap: 0.6rem;
+}
+.logo-icon{
+    height: 5.875rem;
+    width: 1.938rem;
+}
+.logo-text{
+    font-size: 2rem;
+}
+.nav{
+    display: none;
+    /* justify-content: center; */
+    /* align-items: space-between; wont work because this is not a flex item its inline */
+    gap: 1.7rem;
+    padding-top: 0.5rem;
+}
+.nav-link{
+    color: #718096;
+    font-size: 1.125rem;
+    font-weight: 600;    
+}
+.nav-link:hover{
+    color: var(--link-color);
+}
+.contact-button{
+    display: none;
+    border: none;
+    border-radius: 0.375rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+}
+.contact-button:hover{
+    background-color: #2427cd;
+}
+@media screen and (min-width : 850px){
+    .contact-button{
+        display: block;
+    }
+    .nav{
+        display: flex;
+    }
+}
+
+.menu-button{
+    display: none;
+    border-radius: 0.375rem;
+    border: none;
+    background-color: var(--background-color);
+}
+
+@media screen and (max-width : 850px){
+    .menu-button{
+        display: block;
+    }
+}
+
+.menu-icon{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.main-section{
+    /* jitni uper thi utni hi yaha dedo */
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column; 
+    /* we will create the page acc to phone display and using media query change it to laptop display */
+    padding: 2rem;
+    gap: 2rem;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.content-left{
+   
+    /* can make flex and assign coloumn direction but since it is a child div so by defaulut bhi vahi hai */
+    text-align: center;
+    /* poora left dabba comes with an animation from left to right */
+    animation: slideFromLeft 1s ease forwards;
+    opacity: 0;
+    margin-bottom: 2rem;
+}
+
+/* harek animation ke liye starting of animation (0%) aur ending of animation(100%) pe kya hoga voh likho */
+@keyframes slideFromLeft {
+    0%{
+        opacity: 0%;
+        transform: translateX(-100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.section-label{
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.section-title{
+    font-size: 2.3rem;
+    padding: 0.5rem;
+}
+.section-description{
+    font-size: 1.2rem;
+    color: var(--gray);
+    margin: 1rem;
+}
+/* button ka overall div pehele aa rakha hai inside two buttons se so voh pehele style hoga */
+.button{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-button,
+.tour-button{
+    border: none;
+    border-radius: 0.375rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+}
+.tour-button{
+    background-color: var(--dark-gray);
+}
+.start-button:hover{
+    background-color: #2427cd;
+}
+.tour-button:hover{
+    background-color: var(--gray);
+}
+.content-right{
+    /* sirf image hi hai isme so display flex */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-container{
+    border-radius: 0.625rem;
+    /*  to prevent uneccesary scrolling if element is present outside viewport */
+    overflow: hidden; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    height: 57vh;
+}
+.section-image{
+    height: 100%;
+    width: 100%;
+}
+@media screen and (min-width: 850px){
+    .main-section{
+        flex-direction: row;
+    }
+    .content-left{
+        max-width: 50%;
+    }
+    .content-right{
+        max-width: 50%;
+    }
+    .image-container{
+        height: 67vh;
+    }
+    .section-label{
+        font-size: 1.5rem;
+    }
+}
+/* choti screen ke liye iska code and media query se badi screen */
+.company-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    animation: slideFromLeft 1s ease forwards;
+}
+
+.company-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 3.6rem;
+    padding: 1rem;
+    background-color: var(--light-gray);
+    border: none;
+    border-radius: 0.625rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1.8rem 2.5rem;
+}
+
+.company-logo{
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.svg-img{
+    height: 1.56rem;
+}
+
+.logo-txt{
+    font-size: 1rem;
+}
+
+@media screen and (min-width:850px) {
+    .company-grid{
+        grid-template-columns: repeat(4,1fr);
+    }
+    .company-title{
+        font-size: 2.3rem;
+        font-weight: bold;
+    }
+}
+
+/* one important thing is that when you want to make spacing btw elements which are in same div
+you can make them flex and then make a gap btw them , gap is spacing btw elements inside flex
+whereas padding is spacing btw elements and the div container boundary */
+
+.feature-container{
+    background-color: var(--light-gray);
+    padding: 2.5rem 0;
+    text-align: center;
+}
+
+.feature-content{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.main-info{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main-title{
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.main-description{
+    color: var(--gray);
+    font-size: 1rem;
+}
+
+.feature-grid{
+    display: grid;
+   /* fr stands for container width , this means -> 2 cols take full container width */
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 2rem;
+    margin-top: 1.3rem;
+}
+
+.feature-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #6d7890;
+    padding: 1.6rem;
+    border-radius: 1rem;
+    gap: 1rem;
+}
+.feature-info{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/* jab multiple cheeze arrange karni ho ek sath ek direction me with spacing -> display -> flex */
+.icon-container{
+    background-color: var(--background-color);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-svg{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.feature-title{
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.feature-description{
+    color: white;
+} 
+
+/* sab colors ka alag color karna hai but with same class name
+so we can use nth child property ith child ke hisab se sabko color kardo */
+
+.feature-card:nth-child(1){
+    background-color: #4a90e2;
+}
+
+.feature-card:nth-child(2){
+    background-color: #FF6289;
+}
+
+.feature-card:nth-child(3){
+    background-color: #fcbf58;
+}
+
+.feature-card:nth-child(4){
+    background-color: #44bfc3;
+}
+
+.feature-card:nth-child(5){
+    background-color: #77b05d;
+}
+
+.feature-card:nth-child(6){
+    background-color: #7d78b1;
+}
+
+/* at this location voh change hogi from grid ka 2 cols to 1 cols per row*/
+
+@media screen and (max-width:850px) {
+    .feature-grid{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+.testimonial-container{
+    background-color: var(--background-color);
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 1280px;
+}
+.testimonial-content{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.testimonial-title{
+    font-size: 1.875rem;
+    font-weight: bold;
+}
+
+.testimonial-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+    grid-gap: 2rem;
+}
+
+.testimonial-card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(171, 163, 163);
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1.2rem;
+    gap: 1rem;
+    /* yeh transition batata hai ki jab transition hogi jab hover ho 
+    to kese kitne time me aur kis effect se hoga */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover{
+    /* scale is a type of transformation jisme bada (scale) hojata hai */
+    transform: scale(1.05);;
+    box-shadow: 0 4px 8px rbga(0,0,0,0.2);
+    border: 1px solid blue;
+}
+
+.testimonial-avatar img{
+    height: 5rem;
+    width: 5rem;
+}
+
+.testimonial-text{
+    color: #555;
+    font-size: 0.875rem;
+}
+
+.testimonial-name{
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.testimonial-desc{
+    font-size: 0.875rem;
+    color: #777;
+}
+
+@media screen and (max-width:850px) {
+    .feature-grid{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+
+/* topmost container me content ko center me place karna hai
+so margin 0 auto kardo -> diff sides se margin hat jayegi */
+.newsletter-container{
+    background-color: var(--background-color);
+    
+    max-width: 1280px;
+    height: 40vh;
+    margin: 0 auto;
+}
+/* max width mention kardo top div me aur neeche vali div me 100%width kardiya */
+.newsletter-content{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--light-gray);
+    width: 99%;
+    height: 99%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* agar 2 portions me left aur right me equal equal baatna hai
+toh unki width 50% kardo of parent div hogi voh */
+.news-left{
+    height: 100%;
+    display: none;
+}
+/* left div me poora image ko place karna hai isleye image ke andar 100% kardia  */
+.news-left img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* intially hum choti screen ke liye bana rahe so we will remove image so uske div 
+ka display none kardia and dusri div ka 100% kardia*/
+.news-right{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* harek me top me padding 0 and left me padding 3 bc we want to keep it a little away from left border */
+
+.news-info{
+    padding:0 3rem;
+}
+
+.news-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: left;
+}
+
+.news-desc{
+    text-align: left;
+    color: #777;
+}
+
+.news-form{
+    padding: 0 3rem;
+    display: flex;
+    margin-bottom: 1rem;
+    gap: 0.6rem;
+}
+
+
+.news-email{
+    background-color: var(--background-color);
+    /* width: 100%; */
+    color: #333;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+}
+
+/* jab email input pe click karoga -> focus not hover */
+.news-email:focus{
+    border-color: #2563eb;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.news-send-button{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+}
+
+.news-send-button:hover{
+    background-color: var(--link-color);
+}
+
+.privacy-policy{
+    font-size: 0.76rem;
+    padding: 0 3rem;
+    color: #777;
+}
+
+.news-link{
+    text-decoration: underline;
+    color: #2563eb;
+}
+
+@media screen and (min-width:850px) {
+    /* after reacing min width give it width both 50% */
+    .news-left{
+        display: block;
+        width: 50%;
+    }
+    .news-right{
+        width: 50%;
+    }
+    .news-title{
+        font-size: 2.5rem;
+    }   
+}
+
+.footer-container{
+    background-color: var(--background-color);
+    margin: 0 auto;
+    padding: 0 2rem;
+    /* display: flex;
+    flex-direction: column; */
+    max-width: 1280px;
+}
+
+.footer{
+    max-width: 1280px;
+    padding:1.2rem 2.4rem;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2rem;
+}
+
+.footer-top{
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.65rem;
+}
+
+.logo-svg{
+    width: 2rem;
+    height: 6rem;
+}
+
+.comp-logo{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: -1.9rem;
+}
+.logo-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.28rem;
+    font-weight: bold;
+    color: black;
+}
+.social-icon{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.filler-text{
+    font-size: 1rem;
+    color: #777;
+}
+.social{
+    display: flex;
+    gap: 0.8rem;
+}
+.footer-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 58%;
+    grid-gap: 5.67rem;
+    padding-top: 2rem;
+}
+
+.footer-grid-heading{
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+ul{
+    list-style-type: none;
+}
+.footer-link{
+    color: #777;
+    font-size: 0.875rem;
+}
+.footer-links-list{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.footer-grid-heading{
+    margin-bottom: 1.65rem;
+}
+
+.footer-copyright{
+    color: var(--gray);
+    font-size: 0.75rem;
+    padding-bottom: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.15rem;
+    border-top: 1px solid #E5E7EB;
+}
+
+@media screen and (max-width:1080px) {
+    .footer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-top{
+        padding-left: 10rem;
+    }
+    .footer-grid{
+        align-self: center;
+        justify-content: space-evenly;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .footer-top{
+        padding-left: 1rem;
+    }
+    .footer-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+/* random user generator css */
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+.wrapper,
+.wrapper .img-area {
+  background: #ecf0f3;
+  box-shadow: -3px -3px 7px #fff, 3px 3px 5px #ceced1;
+}
+
+.wrapper {
+  position: relative;
+  width: 350px;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+
+.wrapper .img-area {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-area .inner-area {
+  height: calc(100% - 25px);
+  width: calc(100% - 25px);
+  border-radius: 50%;
+}
+
+.inner-area img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.wrapper #name {
+  font-size: 23px;
+  font-weight: 500;
+  color: #31344b;
+  margin: 10px 0 5px 0;
+}
+
+.wrapper #btn {
+  position: relative;
+  width: 150px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  color: #31344b;
+  font-size: 13px;
+  font-weight: 450;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 4;
+  margin: 10px 0 15px 0;
+  background-color: #ecf0f3;
+  box-shadow: -3px -3px 7px #fff, 3px 3px 5px #ceced1;
+}
+
+.wrapper .horizon {
+  width: 330px;
+  height: 2px;
+  border-width: 0;
+  background: #e4e4e4;
+  margin: 10px 0 5px 0;
+}
+
+.wrapper .info {
+  color: #44476a;
+  font-size: 14px;
+  font-weight: 500;
+  color: #31344b;
+  text-align: left;
+}
+
+.info p {
+  margin-bottom: 20px;
+}
+.heading{
+    padding: 2rem;
+}
+.random-person{
+    padding-left: 30%;
+}
+
+
+
+
+
+
+
+
